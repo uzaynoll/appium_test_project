@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "Learning Appium",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha \"test/**/*.js\""
   },
   "author": "Ujjwal Khanal",
   "license": "ISC",
   "devDependencies": {
+    "mocha": "^11.0.1",
     "webdriverio": "^9.5.0"
   }
 }
