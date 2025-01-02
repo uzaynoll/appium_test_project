@@ -5,7 +5,6 @@ let driver;
 
 export const initDriver = async () => {
     if (!driver) {
-        console.log('Capabilities:', capabilities);
         driver = await remote({
             capabilities,
             host,

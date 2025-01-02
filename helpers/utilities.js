@@ -1,21 +1,22 @@
 class Helper {
-    static async getElement(locator) {
-        return $(locator);
+    static async getElement(driver, locator) {
+        return await driver.$(locator);
     }
 
-    static async waitForDisplayed(locator, timeout = 5000) {
-        const element = await this.getElement(locator);
+    static async waitForDisplayed(driver, locator, timeout = 5000) {
+        const element = await this.getElement(driver, locator);
         await element.waitForDisplayed({ timeout });
-        return element;
     }
 
-    static async setValue(locator, value) {
-        const element = await this.waitForDisplayed(locator);
+    static async setValue(driver, locator, value, timeout = 5000) {
+        const element = await this.getElement(driver, locator);
+        await this.waitForDisplayed(driver, locator, { timeout });
         await element.setValue(value);
     }
 
-    static async clickElement(locator) {
-        const element = await this.waitForDisplayed(locator);
+    static async clickElement(driver, locator, timeout = 5000) {
+        const element = await this.getElement(driver, locator);
+        await this.waitForDisplayed(driver, locator, { timeout });
         await element.click();
     }
 }
